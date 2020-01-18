@@ -1,4 +1,4 @@
-version: '3.4'
+version: "3.4"
 
 services:
   web:
@@ -13,9 +13,9 @@ services:
     image: ${DOCKER_REGISTRY}-helloworld:${VERSION:-dev}
     build:
       context: .
-      dockerfile: Services/HelloWorld/Dockerfile
+      dockerfile: AKS/Services/HelloWorld/Dockerfile
   helloworldnode:
     image: ${DOCKER_REGISTRY}-helloworldnode:${VERSION:-dev}
     build:
       context: .
-      dockerfile: Services/HelloNode/Dockerfile
+      dockerfile: AKS/Services/HelloNode/Dockerfile
