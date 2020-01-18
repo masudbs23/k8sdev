@@ -21,7 +21,7 @@ steps:
       echo "$(dockerPassword)" | docker login  $(dockerId).azurecr.io -u $(dockerUsername) --password-stdin
       docker push ${DOCKER_REGISTRY}/aks-web:$(VERSION)
       docker push ${DOCKER_REGISTRY}/aks-helloworld:$(VERSION)
-      docker ${DOCKER_REGISTRY}/aks-helloworldnode:$(VERSION)
+      docker push ${DOCKER_REGISTRY}/aks-helloworldnode:$(VERSION)
     displayName: "docker publish"
 
   - task: CopyFiles@2
