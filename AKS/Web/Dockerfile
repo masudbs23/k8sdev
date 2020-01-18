@@ -25,10 +25,10 @@ RUN npm run build -- --$configuration
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
-COPY ["AKS/Web/Web.csproj", "Web/"]
-RUN dotnet restore "Web/Web.csproj"
+COPY ["AKS/Web/Web.csproj", "AKS/Web/"]
+RUN dotnet restore "AKS/Web/Web.csproj"
 COPY . .
-WORKDIR "/src/Web"
+WORKDIR "/src/AKS/Web"
 RUN dotnet build "Web.csproj" -c Release -o /app/build
 
 FROM build AS publish
