@@ -29,7 +29,7 @@ steps:
   displayName: 'docker-compose build'
 
 - script: |
-    echo "$(dockerPassword)" | docker login  $(dockerId).azurecr.io -u $(dockerUsername) --password-stdin
+    echo "$(dockerPassword)" | docker login  $(dockerId).azurecr.io -u $(dockerId) --password-stdin
     docker push $(DOCKER_REGISTRY)/k8sappone:$(BUILD_VERSION)
     docker push $(DOCKER_REGISTRY)/k8sapptwo:$(BUILD_VERSION)
   displayName: "docker publish"
