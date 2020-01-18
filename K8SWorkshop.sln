@@ -5,9 +5,14 @@ VisualStudioVersion = 16.0.29403.142
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "K8SAppOne", "K8SAppOne\K8SAppOne.csproj", "{9C810C94-6C01-4DEF-9DC5-87C74BDB323A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K8SAppTwo", "K8SAppTwo\K8SAppTwo.csproj", "{0E3B78F0-A9BA-41D8-894F-EC0A7020F484}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "K8SAppTwo", "K8SAppTwo\K8SAppTwo.csproj", "{0E3B78F0-A9BA-41D8-894F-EC0A7020F484}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{EF33AA54-2034-48BD-8700-6FB1356D2F2A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4F877A9A-0F14-4D48-97B0-6BBCB9F79779}"
+	ProjectSection(SolutionItems) = preProject
+		azure-pipelines.yml = azure-pipelines.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

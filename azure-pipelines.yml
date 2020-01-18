@@ -7,13 +7,34 @@ trigger:
 - master
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'ubuntu-16.04'
+
+variables:
+  BUILD_VERSION: '$(build.buildNumber)'
+  DOCKER_REGISTRY: '$(dockerId)/$(dockerUsername)'
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+- task: DotNetCoreCLI@2
+  displayName: Build .Net projects
+  inputs:
+    command: build
+    projects: 'K8SWorkshop.sln'
+    arguments: --configuration $(BuildConfiguration)
+    workingDirectory: '$(Build.SourcesDirectory)'
+
+- script: sudo service docker status
+  displayName: 'docker status'
+
+- script: docker-compose -f docker-compose.yml --project-directory . build
+  displayName: 'docker-compose build'
 
 - script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+    echo "$(dockerPassword)" | docker login  $(dockerId).azurecr.io -u $(dockerUsername) --password-stdin
+    docker push $(DOCKER_REGISTRY)/k8sappone:$(BUILD_VERSION)
+    docker push $(DOCKER_REGISTRY)/k8sapptwo:$(BUILD_VERSION)
+  displayName: "docker publish"
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    artifactsName: 'drop'
