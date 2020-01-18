@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  k8sappone:
+    image: ${DOCKER_REGISTRY-}k8sappone
+    build:
+      context: .
+      dockerfile: K8SAppOne/Dockerfile
+
+  k8sapptwo:
+    image: ${DOCKER_REGISTRY-}k8sapptwo
+    build:
+      context: .
+      dockerfile: K8SAppTwo/Dockerfile
+
