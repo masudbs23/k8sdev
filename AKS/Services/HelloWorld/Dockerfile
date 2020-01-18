@@ -7,7 +7,7 @@ EXPOSE 80
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
 COPY ["AKS/Services/HelloWorld/HelloWorld.csproj", "AKS/Services/HelloWorld/"]
-RUN dotnet restore "Services/HelloWorld/HelloWorld.csproj"
+RUN dotnet restore "AKS/Services/HelloWorld/HelloWorld.csproj"
 COPY . .
 WORKDIR "/src/AKS/Services/HelloWorld"
 RUN dotnet build "HelloWorld.csproj" -c Release -o /app/build
