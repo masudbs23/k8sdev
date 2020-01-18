@@ -11,13 +11,13 @@ FROM node:12 as angular-build
 WORKDIR /app
 
 # Install NPM packages
-COPY Web/ClientApp/package*.json /app/
+COPY AKS/Web/ClientApp/package*.json /app/
 RUN npm set progress=true
 RUN npm cache clean --force
 RUN npm install
 
 # Copy Angular source code to app folder
-COPY Web/ClientApp /app/
+COPY AKS/Web/ClientApp /app/
 
 # Build Angular application
 ARG configuration=prod
